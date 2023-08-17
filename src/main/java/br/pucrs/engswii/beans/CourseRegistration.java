@@ -13,7 +13,7 @@ public class CourseRegistration {
         courseRecords = new ArrayList<Course>();
     }
 
-    private static CourseRegistration getInstance() {
+    public static CourseRegistration getInstance() {
 
         if(cr == null) {
             cr = new CourseRegistration();

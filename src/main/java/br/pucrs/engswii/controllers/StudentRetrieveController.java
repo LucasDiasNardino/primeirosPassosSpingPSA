@@ -18,7 +18,7 @@ import br.pucrs.engswii.beans.StudentRegistration;
 
 @RestController
 public class StudentRetrieveController {
-	@GetMapping("/student/allstudent")
+	@GetMapping("/retrieve/students")
 	public List<Student> getAllStudents() {
 		return StudentRegistration.getInstance().getStudentRecords();
 	}
