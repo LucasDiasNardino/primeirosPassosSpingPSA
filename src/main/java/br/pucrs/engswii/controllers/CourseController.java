@@ -24,13 +24,13 @@ public class CourseController {
 		
         
         for (Course c : CourseOps.getInstance().getCourseRecords()) {
-            if(course.getCodcred().equals(c.getCodcred())){
+            if(course.getClassNum().equals(c.getClassNum())){
                 System.out.println("Course already exists");
                 courseRegReply.setCodcred(null);
                 courseRegReply.setDescription(null);
                 courseRegReply.setClassNum(null);
                 courseRegReply.setRegistrationNum(null);
-                courseRegReply.setRegistrationStatus("Course already exists");
+                courseRegReply.setRegistrationStatus("Course already registered");
                 return courseRegReply;
             }
         }

@@ -1,9 +1,12 @@
 package br.pucrs.engswii.model;
 
+import java.util.List;
+
 public class Course {
     private String codcred;
     private String description;
     private String classNum;
+    private List<Student> students = null;
 
     public String getCodcred() {
         return codcred;
@@ -27,5 +30,13 @@ public class Course {
 
     public void setClassNum(String classNum) {
         this.classNum = classNum;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 }
