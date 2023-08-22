@@ -46,4 +46,6 @@ public class CourseRegistrationReply {
     public void setRegistrationStatus(String registrationStatus) {
         this.registrationStatus = registrationStatus;
     }
+
+    
 }
