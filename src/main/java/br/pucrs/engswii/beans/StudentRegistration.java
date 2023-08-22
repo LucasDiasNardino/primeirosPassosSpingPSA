@@ -3,6 +3,8 @@ package br.pucrs.engswii.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.pucrs.engswii.model.Student;
+
 public class StudentRegistration {
 
 	private List<Student> studentRecords;

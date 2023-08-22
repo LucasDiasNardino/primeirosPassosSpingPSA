@@ -1,4 +1,4 @@
-package br.pucrs.engswii.beans;
+package br.pucrs.engswii.model;
 
 public class Course {
     private String codcred;

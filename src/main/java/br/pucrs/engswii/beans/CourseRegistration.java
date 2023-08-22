@@ -1,6 +1,11 @@
 package br.pucrs.engswii.beans;
 
 import java.util.List;
+
+import org.apache.catalina.manager.util.SessionUtils;
+
+import br.pucrs.engswii.model.Course;
+
 import java.util.ArrayList;
 
 public class CourseRegistration {
@@ -25,7 +30,26 @@ public class CourseRegistration {
     }
 
     public void add(Course c) {
-        courseRecords.add(c);
+        Boolean existis = verifyDuplicity(c);
+        if(!existis){
+            System.out.println("Duplicity!");
+        }
+        else{
+            courseRecords.add(c);
+        }
+    }
+
+
+    public Boolean verifyDuplicity(Course c){
+        for(int i=0; i<courseRecords.size(); i++)
+        {
+            Course cn = courseRecords.get(i);
+            if(cn.getCodcred().equals(c.getCodcred())) {
+                System.out.println("Duplicity!");
+                return true;
+            }
+        }
+        return false;
     }
 
     public String upDateCourse(Course c) {

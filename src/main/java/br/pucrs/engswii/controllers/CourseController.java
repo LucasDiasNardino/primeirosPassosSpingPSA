@@ -1,18 +1,21 @@
 package br.pucrs.engswii.controllers;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pucrs.engswii.beans.Course;
 import br.pucrs.engswii.beans.CourseRegistration;
 import br.pucrs.engswii.beans.CourseRegistrationReply;
-import br.pucrs.engswii.beans.StudentRegistration;
+import br.pucrs.engswii.model.Course;
 
 @RestController
-public class CourseRegistrationController {
+public class CourseController {
     
-    @PostMapping("/register/course")
+   @PostMapping("/course/register")
     public CourseRegistrationReply registerCourse(@RequestBody Course course){
         System.out.println("In registerCourse");
         CourseRegistrationReply courseRegReply = new CourseRegistrationReply();
@@ -39,4 +42,15 @@ public class CourseRegistrationController {
         return courseRegReply;
     
     }
+
+    @GetMapping("/course/list")
+    public List<Course> getAllCourses() {
+        return CourseRegistration.getInstance().getCourseRecords();
+    }
+    
+    @PutMapping("/course/update")
+	public String updateCourseRecord(@RequestBody Course course) {
+		System.out.println("In updateCourseRecord");   
+		return CourseRegistration.getInstance().upDateCourse(course);
+	}
 }
