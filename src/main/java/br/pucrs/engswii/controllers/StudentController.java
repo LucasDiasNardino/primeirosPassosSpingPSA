@@ -19,7 +19,19 @@ public class StudentController {
     @PostMapping("/student/register")
 	public StudentRegistrationReply registerStudent(@RequestBody Student student) {
 		System.out.println("In registerStudent");
-		StudentRegistrationReply stdregreply = new StudentRegistrationReply();           
+		StudentRegistrationReply stdregreply = new StudentRegistrationReply();       
+		
+		for (Student s : StudentRegistration.getInstance().getStudentRecords()) {
+			if(s.getRegistrationNumber().equals(student.getRegistrationNumber())){
+				System.out.println("Student already exists");
+				stdregreply.setName(null);
+				stdregreply.setAge(0);
+				stdregreply.setRegistrationNumber(null);
+				stdregreply.setRegistrationStatus("Student already exists");
+				return stdregreply;
+			}
+		}
+
 		StudentRegistration.getInstance().add(student);
 		//We are setting the below value just to reply a message back to the caller
 		stdregreply.setName(student.getName());
