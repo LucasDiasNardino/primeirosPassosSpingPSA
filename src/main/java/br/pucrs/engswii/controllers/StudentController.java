@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pucrs.engswii.beans.StudentRegistration;
-import br.pucrs.engswii.beans.StudentRegistrationReply;
+import br.pucrs.engswii.beans.StudentOps;
+import br.pucrs.engswii.beans.StudentReply;
 import br.pucrs.engswii.model.Student;
 
 @RestController
 public class StudentController {
     @PostMapping("/student/register")
-	public StudentRegistrationReply registerStudent(@RequestBody Student student) {
+	public StudentReply registerStudent(@RequestBody Student student) {
 		System.out.println("In registerStudent");
-		StudentRegistrationReply stdregreply = new StudentRegistrationReply();       
+		StudentReply stdregreply = new StudentReply();       
 		
-		for (Student s : StudentRegistration.getInstance().getStudentRecords()) {
+		for (Student s : StudentOps.getInstance().getStudentRecords()) {
 			if(s.getRegistrationNumber().equals(student.getRegistrationNumber())){
 				System.out.println("Student already exists");
 				stdregreply.setName(null);
@@ -32,7 +32,7 @@ public class StudentController {
 			}
 		}
 
-		StudentRegistration.getInstance().add(student);
+		StudentOps.getInstance().add(student);
 		//We are setting the below value just to reply a message back to the caller
 		stdregreply.setName(student.getName());
 		stdregreply.setAge(student.getAge());
@@ -44,18 +44,24 @@ public class StudentController {
 
     @GetMapping("/student/list")
 	public List<Student> getAllStudents() {
-		return StudentRegistration.getInstance().getStudentRecords();
+		return StudentOps.getInstance().getStudentRecords();
 	}
 
     @DeleteMapping("/student/delete/{regdNum}")
 	public String deleteStudentRecord(@PathVariable("regdNum") String regdNum) {
 		System.out.println("In deleteStudentRecord");   
-		return StudentRegistration.getInstance().deleteStudent(regdNum);
+		return StudentOps.getInstance().deleteStudent(regdNum);
 	}
 
     @PutMapping("/student/update")
 	public String updateStudentRecord(@RequestBody Student stdn) {
 		System.out.println("In updateStudentRecord");   
-		return StudentRegistration.getInstance().upDateStudent(stdn);
+		return StudentOps.getInstance().upDateStudent(stdn);
+	}
+
+	@GetMapping("/student/find/{regdNum}")
+	public Student getStudent(@PathVariable("regdNum") String regdNum) {
+		System.out.println("In getStudentRecord");   
+		return StudentOps.getInstance().findStudent(regdNum);
 	}
 }

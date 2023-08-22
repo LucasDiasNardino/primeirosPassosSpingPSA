@@ -1,6 +1,6 @@
 package br.pucrs.engswii.beans;
 
-public class CourseRegistrationReply {
+public class CourseReply {
     String codcred;
     String description;
     String classNum;

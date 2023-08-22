@@ -8,20 +8,20 @@ import br.pucrs.engswii.model.Course;
 
 import java.util.ArrayList;
 
-public class CourseRegistration {
+public class CourseOps {
     
     private List<Course> courseRecords;
 
-    private static CourseRegistration cr = null;
+    private static CourseOps cr = null;
 
-    private CourseRegistration(){
+    private CourseOps(){
         courseRecords = new ArrayList<Course>();
     }
 
-    public static CourseRegistration getInstance() {
+    public static CourseOps getInstance() {
 
         if(cr == null) {
-            cr = new CourseRegistration();
+            cr = new CourseOps();
             return cr;
         }
         else {
@@ -33,8 +33,6 @@ public class CourseRegistration {
         courseRecords.add(c);
     }
 
-
-    
 
     public String upDateCourse(Course c) {
 

@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.pucrs.engswii.beans.CourseRegistration;
-import br.pucrs.engswii.beans.CourseRegistrationReply;
+import br.pucrs.engswii.beans.CourseOps;
+import br.pucrs.engswii.beans.CourseReply;
 import br.pucrs.engswii.model.Course;
 
 @RestController
 public class CourseController {
     
    @PostMapping("/course/register")
-    public CourseRegistrationReply registerCourse(@RequestBody Course course){
+    public CourseReply registerCourse(@RequestBody Course course){
         System.out.println("In registerCourse");
-        CourseRegistrationReply courseRegReply = new CourseRegistrationReply();
+        CourseReply courseRegReply = new CourseReply();
 		
         
-        for (Course c : CourseRegistration.getInstance().getCourseRecords()) {
+        for (Course c : CourseOps.getInstance().getCourseRecords()) {
             if(course.getCodcred().equals(c.getCodcred())){
                 System.out.println("Course already exists");
                 courseRegReply.setCodcred(null);
@@ -34,7 +34,7 @@ public class CourseController {
                 return courseRegReply;
             }
         }
-        CourseRegistration.getInstance().add(course);
+        CourseOps.getInstance().add(course);
         courseRegReply.setCodcred(course.getCodcred());
         courseRegReply.setDescription(course.getDescription());
         courseRegReply.setClassNum(course.getClassNum());
@@ -47,18 +47,20 @@ public class CourseController {
 
     @GetMapping("/course/list")
     public List<Course> getAllCourses() {
-        return CourseRegistration.getInstance().getCourseRecords();
+        return CourseOps.getInstance().getCourseRecords();
     }
     
     @PutMapping("/course/update")
 	public String updateCourseRecord(@RequestBody Course course) {
 		System.out.println("In updateCourseRecord");   
-		return CourseRegistration.getInstance().upDateCourse(course);
+		return CourseOps.getInstance().upDateCourse(course);
 	}
 
     @DeleteMapping("/course/delete/{codcred}")
     public String deleteCourseRecord(@PathVariable("codcred") String codcred) {
         System.out.println("In deleteCourseRecord");   
-        return CourseRegistration.getInstance().deleteCourse(codcred);
+        return CourseOps.getInstance().deleteCourse(codcred);
     }
+
+    
 }
