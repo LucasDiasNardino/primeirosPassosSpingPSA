@@ -62,5 +62,9 @@ public class CourseController {
         return CourseOps.getInstance().deleteCourse(codcred);
     }
 
-    
+    @GetMapping("/course/find/{codcred}")
+    public Course findCourse(@PathVariable("codcred") String codcred) {
+        System.out.println("In findCourse");   
+        return CourseOps.getInstance().findCourse(codcred);
+    }
 }

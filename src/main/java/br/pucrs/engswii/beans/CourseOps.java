@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.catalina.manager.util.SessionUtils;
 
 import br.pucrs.engswii.model.Course;
+import br.pucrs.engswii.model.Student;
 
 import java.util.ArrayList;
 
@@ -64,5 +65,17 @@ public class CourseOps {
 
     public List<Course> getCourseRecords() {
         return courseRecords;
+    }
+
+    public Course findCourse(String codcred) {       
+		for (Course course : courseRecords) {
+			if(course.getCodcred().equals(codcred)){
+				System.out.println("Course found");
+				return course;
+			}
+		}
+
+		System.out.println("Course not found");
+        return null;
     }
 }
