@@ -75,4 +75,20 @@ public class StudentOps {
         return null;
     }
 
+    public List<Student> findStudentByName(String name) {
+		List<Student> matches = new ArrayList<Student>();
+
+		for (Student student : studentRecords) {
+			if(student.getName().contains(name)){
+				matches.add(student);
+			}
+		}
+
+		if(matches.size() == 0) {
+			System.out.println("No students found");
+		}
+
+		return matches;
+    }
+
 }

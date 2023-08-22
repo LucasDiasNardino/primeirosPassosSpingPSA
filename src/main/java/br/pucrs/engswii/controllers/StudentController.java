@@ -64,4 +64,10 @@ public class StudentController {
 		System.out.println("In getStudentRecord");   
 		return StudentOps.getInstance().findStudent(regdNum);
 	}
+
+	@GetMapping("/student/findName/{name}")
+	public List<Student> getStudentByName(@PathVariable("name") String name) {
+		System.out.println("In getStudentByName");   
+		return StudentOps.getInstance().findStudentByName(name);
+	}
 }
