@@ -29,28 +29,12 @@ public class CourseRegistration {
         }
     }
 
-    public void add(Course c) {
-        Boolean existis = verifyDuplicity(c);
-        if(!existis){
-            System.out.println("Duplicity!");
-        }
-        else{
-            courseRecords.add(c);
-        }
+    public void add(Course c) {       
+        courseRecords.add(c);
     }
 
 
-    public Boolean verifyDuplicity(Course c){
-        for(int i=0; i<courseRecords.size(); i++)
-        {
-            Course cn = courseRecords.get(i);
-            if(cn.getCodcred().equals(c.getCodcred())) {
-                System.out.println("Duplicity!");
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
     public String upDateCourse(Course c) {
 
