@@ -78,4 +78,9 @@ public class CourseOps {
 		System.out.println("Course not found");
         return null;
     }
+
+    public void addStudentToCourse(String codcred, Student student) {
+        Course course = findCourse(codcred);
+        course.getStudents().add(student);
+    }
 }

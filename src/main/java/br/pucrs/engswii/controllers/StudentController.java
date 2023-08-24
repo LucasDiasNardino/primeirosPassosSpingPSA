@@ -28,6 +28,7 @@ public class StudentController {
 				stdregreply.setAge(0);
 				stdregreply.setRegistrationNumber(null);
 				stdregreply.setRegistrationStatus("Student already exists");
+				stdregreply.setCourses(null);
 				return stdregreply;
 			}
 		}
@@ -38,6 +39,7 @@ public class StudentController {
 		stdregreply.setAge(student.getAge());
 		stdregreply.setRegistrationNumber(student.getRegistrationNumber());
 		stdregreply.setRegistrationStatus("Successful");
+		stdregreply.setCourses(student.getCourses());
 
 		return stdregreply;
 	}
