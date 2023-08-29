@@ -14,5 +14,4 @@ public class CourseReply {
     String classNum;
     String registrationNum;
     String registrationStatus; 
-    List<Student> students;
 }

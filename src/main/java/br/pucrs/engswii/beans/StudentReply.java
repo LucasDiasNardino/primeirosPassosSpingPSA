@@ -9,10 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StudentReply {
-
 	String name;
 	int age;
 	String registrationNumber;
 	String registrationStatus;
-	List<Course> courses;
 }

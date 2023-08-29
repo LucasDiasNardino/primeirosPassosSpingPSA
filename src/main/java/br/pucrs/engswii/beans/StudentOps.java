@@ -90,10 +90,4 @@ public class StudentOps {
 
 		return matches;
     }
-
-	public void addCourseToStudent(String registrationNumber, Course course) {
-		Student student = findStudent(registrationNumber);
-		student.getCourses().add(course);
-	}
-
 }

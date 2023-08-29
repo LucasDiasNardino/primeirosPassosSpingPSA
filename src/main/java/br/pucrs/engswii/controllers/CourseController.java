@@ -31,7 +31,6 @@ public class CourseController {
                 courseRegReply.setClassNum(null);
                 courseRegReply.setRegistrationNum(null);
                 courseRegReply.setRegistrationStatus("Course already registered");
-                courseRegReply.setStudents(null);
                 return courseRegReply;
             }
         }
@@ -41,7 +40,6 @@ public class CourseController {
         courseRegReply.setClassNum(course.getClassNum());
         courseRegReply.setRegistrationNum("123456");
         courseRegReply.setRegistrationStatus("Successful");
-        courseRegReply.setStudents(course.getStudents());
         
         return courseRegReply;
     

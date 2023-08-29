@@ -8,10 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Student {
-
+public class StudentReg {
     private String name;
     private int age;
     private String registrationNumber;
 	private String address;
+    private List<Course> courses = new ArrayList<>(); 
 }

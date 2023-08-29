@@ -6,10 +6,11 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+static static @Getter
 @Setter
-public class Course {
+public class CourseReg {
     private String codcred;
     private String description;
     private String classNum;
+    private List<Student> students = new ArrayList<>();
 }

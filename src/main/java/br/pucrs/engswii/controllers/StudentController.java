@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.pucrs.engswii.beans.RegisterOps;
 import br.pucrs.engswii.beans.StudentOps;
 import br.pucrs.engswii.beans.StudentReply;
+import br.pucrs.engswii.model.CourseReg;
 import br.pucrs.engswii.model.Student;
 
 @RestController
@@ -28,7 +30,6 @@ public class StudentController {
 				stdregreply.setAge(0);
 				stdregreply.setRegistrationNumber(null);
 				stdregreply.setRegistrationStatus("Student already exists");
-				stdregreply.setCourses(null);
 				return stdregreply;
 			}
 		}
@@ -39,7 +40,6 @@ public class StudentController {
 		stdregreply.setAge(student.getAge());
 		stdregreply.setRegistrationNumber(student.getRegistrationNumber());
 		stdregreply.setRegistrationStatus("Successful");
-		stdregreply.setCourses(student.getCourses());
 
 		return stdregreply;
 	}
@@ -71,5 +71,11 @@ public class StudentController {
 	public List<Student> getStudentByName(@PathVariable("name") String name) {
 		System.out.println("In getStudentByName");   
 		return StudentOps.getInstance().findStudentByName(name);
+	}
+
+	@GetMapping("/student/seeCourses/{regdNum}")
+	public List<CourseReg> getCourses(@PathVariable("regdNum") String regdNum) {
+		System.out.println("In getCourses");   
+		return RegisterOps.getInstance().getCourses(regdNum);
 	}
 }
