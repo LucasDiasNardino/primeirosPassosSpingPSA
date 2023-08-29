@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.pucrs.engswii.beans.RegisterOps;
 import br.pucrs.engswii.beans.StudentOps;
 import br.pucrs.engswii.beans.StudentReply;
+import br.pucrs.engswii.model.Course;
 import br.pucrs.engswii.model.CourseReg;
 import br.pucrs.engswii.model.Student;
 
@@ -74,8 +75,7 @@ public class StudentController {
 	}
 
 	@GetMapping("/student/seeCourses/{regdNum}")
-	public List<CourseReg> getCourses(@PathVariable("regdNum") String regdNum) {
-		System.out.println("In getCourses");   
-		return RegisterOps.getInstance().getCourses(regdNum);
+	public List<Course> getCourses(@PathVariable("regdNum") String regdNum) {
+		return RegisterOps.getStudentCourses(regdNum);
 	}
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-static static @Getter
+@Getter
 @Setter
 public class CourseReg {
     private String codcred;

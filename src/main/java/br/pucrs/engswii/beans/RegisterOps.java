@@ -15,8 +15,8 @@ import java.util.List;
 @Setter
 public class RegisterOps {
 
-    private static List<CourseReg> courseRegisters;
-    private static List<StudentReg> studentRegisters;
+    private static List<CourseReg> courseRegisters = new ArrayList<>();
+    private static List<StudentReg> studentRegisters = new ArrayList<>();
 
     public static RegisterReply register(Register register) {
         String studentNumber = register.getStudentNumber();
@@ -39,15 +39,12 @@ public class RegisterOps {
                 for (Course c : CourseOps.getInstance().getCourseRecords()) {
                     if (c.getCodcred().equals(codCred) && c.getClassNum().equals(classNum)) {
                         return registerOk(register);
-                    } else {
-                        return invalidCourse(register);
                     }
                 }
-            } else {
-                return invalidStudent(register);
+                return invalidCourse(register);
             }
         }
-        return null;
+        return invalidStudent(register);
     }
 
     public static RegisterReply registerOk(Register register) {
@@ -97,16 +94,15 @@ public class RegisterOps {
         return registerReply;
     }
 
-    public static List<Studet> getStudentReg(String num) {
-     
-        for (Student student : RegisterOps.studentRegisters) {
+    public static List<Course> getStudentCourses(String num) {
+        for ( StudentReg student : RegisterOps.studentRegisters) {
             if (student.getRegistrationNumber().equals(num)) {
-                return student;
+                return student.getCourses();
             }
-            else {
-                return null;
-            }
+
         }
-        
+        System.out.println("Student not found");
+        return null;
+
     }
 }
