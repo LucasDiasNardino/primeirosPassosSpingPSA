@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.catalina.manager.util.SessionUtils;
 
 import br.pucrs.engswii.model.Course;
-import br.pucrs.engswii.model.CourseReg;
 import br.pucrs.engswii.model.Student;
 
 import java.util.ArrayList;

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.pucrs.engswii.beans.CourseOps;
 import br.pucrs.engswii.beans.CourseReply;
+import br.pucrs.engswii.beans.RegisterOps;
 import br.pucrs.engswii.model.Course;
+import br.pucrs.engswii.model.Student;
 
 @RestController
 public class CourseController {
@@ -66,5 +68,11 @@ public class CourseController {
     public Course findCourse(@PathVariable("codcred") String codcred) {
         System.out.println("In findCourse");   
         return CourseOps.getInstance().findCourse(codcred);
+    }
+
+    @GetMapping("/course/seeStudents/{codcred}")
+    public List<Student> seeStudents(@PathVariable("codcred") String codcred) {
+        System.out.println("In seeStudents");   
+        return RegisterOps.getCourseStudents(codcred);
     }
 }

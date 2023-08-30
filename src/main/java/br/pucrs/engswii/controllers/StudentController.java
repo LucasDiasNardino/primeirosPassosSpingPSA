@@ -14,7 +14,6 @@ import br.pucrs.engswii.beans.RegisterOps;
 import br.pucrs.engswii.beans.StudentOps;
 import br.pucrs.engswii.beans.StudentReply;
 import br.pucrs.engswii.model.Course;
-import br.pucrs.engswii.model.CourseReg;
 import br.pucrs.engswii.model.Student;
 
 @RestController
