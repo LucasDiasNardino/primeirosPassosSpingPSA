@@ -2,6 +2,7 @@ package br.pucrs.engswii.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +16,13 @@ import br.pucrs.engswii.beans.CourseReply;
 import br.pucrs.engswii.beans.RegisterOps;
 import br.pucrs.engswii.model.Course;
 import br.pucrs.engswii.model.Student;
+import br.pucrs.engswii.service.CourseService;
 
 @RestController
 public class CourseController {
+
+    @Autowired
+    private CourseService courseService;
     
    @PostMapping("/course/register")
     public CourseReply registerCourse(@RequestBody Course course){
@@ -36,7 +41,10 @@ public class CourseController {
                 return courseRegReply;
             }
         }
-        CourseOps.getInstance().add(course);
+        // CourseOps.getInstance().add(course);
+
+        courseService.save(course);
+
         courseRegReply.setCodcred(course.getCodcred());
         courseRegReply.setDescription(course.getDescription());
         courseRegReply.setClassNum(course.getClassNum());
